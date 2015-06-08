@@ -39,7 +39,7 @@ function get_ads(uri)
  if(body!=null) // check if body is not null, if you dont include this you will get error while scraping if body is null(i.e no data has been sent)
  {
  	 var $=cheerio.load(body);
-	 console.log($("body").html());
+	 //console.log($("body").html());
 	 console.log("_________Ads on the page are_____");
 	 $('.ads-visurl').each(function(){
 	 	console.log($(this).find('cite').text());
