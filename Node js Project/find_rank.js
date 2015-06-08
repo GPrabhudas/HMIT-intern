@@ -1,5 +1,5 @@
 // program to find the rank of websites for the given query
-// prabhudas552@gmail.com,HMIT intern
+// prabhudas552@gmail.com,HMIT intern, 2015
 var request=require("request"); 		// module to download web page
 var cheerio=require("cheerio"); 		// module to get DOM of web page
 var rl=require("readline");     		// module to read input from user
