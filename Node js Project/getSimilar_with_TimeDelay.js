@@ -1,5 +1,5 @@
 //prabhudas552@gmail.com, 12/06/2015, HMIT-intern project work
-//program to get all similar keywords without duplicates for the given query.
+//program to get all similar keywords for the given query.
 
 //Get the required modules for the program here
 var request=require('request');
@@ -12,7 +12,6 @@ var url;// It is url made by using above three variables.
 var node;// It is used to get current node in the DOM tree
 var flag;//It is used to skip the unrelated content
 var temp=[];//It is used to store the node value temporarily.
-var dup={}; // It is a hashed index array, used to prevent duplicates in the result.
 // Initialise a1 and a2
 a1="https://www.google.com/search?gws_rd=ssl&site=&source=hp&q=";
 a2="&oq=";
@@ -22,7 +21,7 @@ a3=process.argv.slice(2).join(' ');
 google_search(a3);
 //define function google_search() here
 function google_search(parameter){
-	//console.log("_______"+parameter+"________");
+	console.log("_______"+parameter+"________");
 	// make url here by cancatenating the variables a1,a2 and a3;
 	url=a1+parameter.replace(/ /g,'+')+a2+parameter.replace(/ /g,'+');
 	//Now make request to server using above url
@@ -41,27 +40,14 @@ function google_search(parameter){
 					flag=1;
 				}
 				if(flag==0){ // this means we have related data
-					//console.log(node.text());
+					console.log(node.text());
 					// store the node value in temp[], so that we can reccursively search in temp[];
-					//temp.push(node.text());
-					try{
-						if(dup[node.text()]==null){
-							temp.push(node.text());
-							dup[node.text()]=1;	// make node value as not visited
-							console.log(node.text());
-						}
-					}catch(err){
-						console.log(err);
-					}
+					temp.push(node.text());
 				}
 			});
 		}
-		setTimeout(function(){	// a time delay of 3 seconds between each subsequent queries.
-			var ser=temp.shift();
-			if(ser!=null && dup[ser]==1){
-				google_search(ser);
-			}
-			dup[ser]=0;	//make node value as visited, so that is not searched again.
+		setTimeout(function(){	// a time delay of 3 seconds between each subequent queries.
+			google_search(temp.shift());
 		},3000);
 	});
 }
