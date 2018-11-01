@@ -1,5 +1,8 @@
 # HMIT-intern
-# project on Node.Js
+### project on Node.Js
+
+Use node js to web scrapping to find the rank of url on google search result and find thousands of similar keywords for the given key.
+
 <h3>All source code files are stored in the directory :HMIT-intern/Node js Project</h3>
 <ol>
   <li>To find the rank(position) of uri for a given query on google search result.</li>
